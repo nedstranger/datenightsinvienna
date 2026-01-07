@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vienna Date Nights – Dating Event</title>
+
+  <!-- Clean, elegant font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg1:#fbfbfd;
+      --bg2:#f4f6fb;
+      --card:#ffffffcc;
+      --text:#0f172a;
+      --muted:#475569;
+      --line:#e6e8ef;
+      --accent:#111827;
+      --accent2:#334155;
+      --shadow: 0 18px 60px rgba(15, 23, 42, 0.10);
+      --radius: 18px;
+    }
+
+    *{box-sizing:border-box}
+    html, body { height:100%; }
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 15% 20%, #eef2ff 0%, transparent 60%),
+        radial-gradient(900px 500px at 80% 10%, #ecfeff 0%, transparent 60%),
+        linear-gradient(180deg, var(--bg1), var(--bg2));
+      overflow:hidden; /* non-scrolling page */
+    }
+
+    .wrap{
+      height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:28px;
+    }
+
+    .card{
+      width:min(1040px, 100%);
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      backdrop-filter: blur(10px);
+      overflow:hidden;
+      display:grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      min-height: min(640px, 92vh);
+    }
+
+    .left{
+      padding:44px 44px 34px 44px;
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      color:var(--accent2);
+      font-weight:600;
+      letter-spacing:0.2px;
+      font-size:14px;
+      text-transform:uppercase;
+    }
+
+    .dot{
+      width:10px; height:10px; border-radius:999px;
+      background: linear-gradient(135deg, #111827, #64748b);
+    }
+
+    h1{
+      margin:0;
+      font-size:40px;
+      line-height:1.08;
+      letter-spacing:-0.8px;
+      font-weight:600;
+    }
+
+    .sub{
+      margin:0;
+      font-size:16px;
+      line-height:1.6;
+      color:var(--muted);
+      max-width: 52ch;
+    }
+
+    .meta{
+      margin-top:6px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px 14px;
+      padding:16px;
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:#fff;
+    }
+
+    .metaItem{
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+    }
+    .metaLabel{
+      font-size:12px;
+      color:#64748b;
+    }
+    .metaValue{
+      font-size:14px;
+      color:var(--text);
+      font-weight:500;
+    }
+
+    .bullets{
+      margin:6px 0 0 0;
+      padding:0;
+      list-style:none;
+      display:grid;
+      gap:10px;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.5;
+    }
+    .bullets li{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+    }
+    .check{
+      flex:0 0 auto;
+      width:18px; height:18px;
+      border-radius:6px;
+      border:1px solid var(--line);
+      background: #fff;
+      display:grid;
+      place-items:center;
+      margin-top:2px;
+    }
+    .check svg{ width:12px; height:12px; }
+
+    .ctaRow{
+      margin-top:auto;
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      align-items:center;
+      padding-top:10px;
+    }
+
+    .btn{
+      appearance:none;
+      border:0;
+      padding:12px 16px;
+      border-radius:12px;
+      font-weight:600;
+      font-size:14px;
+      cursor:pointer;
+      background: var(--accent);
+      color:#fff;
+      box-shadow: 0 12px 26px rgba(17, 24, 39, 0.18);
+    }
+    .btn:hover{ transform: translateY(-1px); }
+    .btn:active{ transform: translateY(0); }
+
+    .btnGhost{
+      background:#fff;
+      color:var(--accent);
+      border:1px solid var(--line);
+      box-shadow:none;
+      font-weight:600;
+    }
+
+    .fine{
+      font-size:12px;
+      color:#64748b;
+    }
+
+    .right{
+      border-left:1px solid var(--line);
+      background: linear-gradient(180deg, #ffffff, #f8fafc);
+      padding:22px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      justify-content:center;
+      align-items:stretch;
+    }
+
+    .right h2{
+      margin:0;
+      font-size:16px;
+      font-weight:600;
+      letter-spacing:-0.2px;
+    }
+
+    .right p{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.55;
+    }
+
+    .pillRow{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      margin-top:6px;
+    }
+    .pill{
+      font-size:12px;
+      color:#334155;
+      border:1px solid var(--line);
+      background:#fff;
+      padding:7px 10px;
+      border-radius:999px;
+    }
+
+    /* Modal */
+    .modalBackdrop{
+      position:fixed;
+      inset:0;
+      background: rgba(15, 23, 42, 0.55);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:22px;
+    }
+    .modal{
+      width:min(980px, 100%);
+      height:min(86vh, 860px);
+      background:#fff;
+      border-radius:18px;
+      box-shadow: 0 30px 120px rgba(0,0,0,0.35);
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,0.18);
+      display:flex;
+      flex-direction:column;
+    }
+    .modalTop{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:14px 16px;
+      border-bottom:1px solid var(--line);
+      background:#fff;
+    }
+    .modalTop strong{ font-size:14px; }
+    .x{
+      border:1px solid var(--line);
+      background:#fff;
+      border-radius:10px;
+      padding:8px 10px;
+      cursor:pointer;
+      font-weight:600;
+      color:#334155;
+    }
+    .frame{
+      flex:1 1 auto;
+      width:100%;
+      border:0;
+    }
+
+    /* Mobile */
+    @media (max-width: 860px){
+      body{ overflow:auto; } /* allow scroll on small screens if needed */
+      .card{
+        grid-template-columns: 1fr;
+        min-height:auto;
+      }
+      .right{
+        border-left:0;
+        border-top:1px solid var(--line);
+      }
+      .left{ padding:34px 22px 22px 22px; }
+      h1{ font-size:32px; }
+      .wrap{ align-items:stretch; }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="wrap">
+    <section class="card">
+      <div class="left">
+        <div class="brand">
+          <span class="dot"></span>
+          <span>Vienna Date Nights</span>
+        </div>
+
+        <h1>Dating & Conversation Night</h1>
+        <p class="sub">
+          A relaxed, in-person monogamous dating event in Vienna. No games. No speeches.
+          Just easy introductions and question cards to remove the awkwardness.
+        </p>
+
+        <div class="meta" aria-label="Event details">
+          <div class="metaItem">
+            <div class="metaLabel">Date</div>
+            <div class="metaValue">[Insert date]</div>
+          </div>
+          <div class="metaItem">
+            <div class="metaLabel">Time</div>
+            <div class="metaValue">[Insert start–end]</div>
+          </div>
+          <div class="metaItem">
+            <div class="metaLabel">Location</div>
+            <div class="metaValue">[Insert venue / district]</div>
+          </div>
+          <div class="metaItem">
+            <div class="metaLabel">Capacity</div>
+            <div class="metaValue">30–40 people</div>
+          </div>
+        </div>
+
+        <ul class="bullets">
+          <li>
+            <span class="check" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M20 7L10 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span>Conversation-starter cards. You can keep it light or go deeper.</span>
+          </li>
+          <li>
+            <span class="check" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M20 7L10 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span>Friendly hosting and clear structure so it never gets weird or chaotic.</span>
+          </li>
+          <li>
+            <span class="check" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M20 7L10 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span>Limited places. RSVP required. First-time event. Keep expectations realistic.</span>
+          </li>
+        </ul>
+
+        <div class="ctaRow">
+          <button class="btn" id="openFormBtn" type="button">Reserve your spot</button>
+          <button class="btn btnGhost" id="openNewTabBtn" type="button">Open form in new tab</button>
+          <span class="fine">No spam. One confirmation email.</span>
+        </div>
+      </div>
+
+      <aside class="right">
+        <h2>What this is</h2>
+        <p>
+          A simple, low-pressure way to meet people who are actively open to monogamous dating.
+          You’ll rotate naturally using prompts. You can leave anytime.
+        </p>
+
+        <div class="pillRow" aria-label="Event tags">
+          <span class="pill">Monogamous dating</span>
+          <span class="pill">Low pressure</span>
+          <span class="pill">Conversation cards</span>
+          <span class="pill">Vienna</span>
+        </div>
+
+        <div style="height:12px"></div>
+
+        <h2>What to bring</h2>
+        <p>
+          Nothing required. Drinks depend on venue. If it’s BYO, it will be stated in the confirmation.
+        </p>
+
+        <div style="height:12px"></div>
+
+        <h2>Dress code</h2>
+        <p>
+          Smart casual. Aim for “first date” not “job interview”.
+        </p>
+      </aside>
+    </section>
+  </main>
+
+  <!-- Modal with embedded Google Form (page itself stays non-scrolling) -->
+  <div class="modalBackdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal">
+      <div class="modalTop">
+        <strong id="modalTitle">Reserve your spot</strong>
+        <button class="x" id="closeBtn" type="button" aria-label="Close form">Close</button>
+      </div>
+
+      <iframe
+        class="frame"
+        src="https://docs.google.com/forms/d/e/1FAIpQLScFsrIMZkl81az7t1JDtEhHTyZOvBFNdbKWy2ulH72DIBdkRA/viewform?embedded=true"
+        loading="lazy"
+        title="Google Form RSVP">
+      </iframe>
+    </div>
+  </div>
+
+  <script>
+    const modalBackdrop = document.getElementById("modalBackdrop");
+    const openFormBtn = document.getElementById("openFormBtn");
+    const openNewTabBtn = document.getElementById("openNewTabBtn");
+    const closeBtn = document.getElementById("closeBtn");
+
+    const formUrl = "https://docs.google.com/forms/d/e/1FAIpQLScFsrIMZkl81az7t1JDtEhHTyZOvBFNdbKWy2ulH72DIBdkRA/viewform";
+
+    function openModal(){
+      modalBackdrop.style.display = "flex";
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeModal(){
+      modalBackdrop.style.display = "none";
+      document.body.style.overflow = "hidden"; // keep non-scrolling desktop
+    }
+
+    openFormBtn.addEventListener("click", openModal);
+    closeBtn.addEventListener("click", closeModal);
+
+    modalBackdrop.addEventListener("click", (e) => {
+      if (e.target === modalBackdrop) closeModal();
+    });
+
+    openNewTabBtn.addEventListener("click", () => {
+      window.open(formUrl, "_blank", "noopener,noreferrer");
+    });
+
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && modalBackdrop.style.display === "flex") closeModal();
+    });
+  </script>
+</body>
+</html>
