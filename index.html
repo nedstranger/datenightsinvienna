@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Better Date Nights in Vienna</title>
+  <meta name="description" content="A weekly list of interesting, unusual events in Vienna that actually make good dates." />
+
+  <style>
+    :root{
+      --bg:#0b0d10;
+      --card:#12161c;
+      --text:#f3f5f7;
+      --muted:#b7c0cc;
+      --border:rgba(255,255,255,.10);
+      --focus:rgba(255,255,255,.22);
+      --button:#ffffff;
+      --buttonText:#0b0d10;
+      --shadow:0 16px 50px rgba(0,0,0,.45);
+      --radius:18px;
+      --max:760px;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1200px 700px at 25% 15%, rgba(255,255,255,.10), transparent 60%),
+                  radial-gradient(900px 600px at 80% 65%, rgba(255,255,255,.07), transparent 65%),
+                  var(--bg);
+      color:var(--text);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+    }
+
+    .wrap{
+      width:100%;
+      max-width:var(--max);
+    }
+
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:32px;
+      backdrop-filter: blur(8px);
+    }
+
+    h1{
+      margin:0 0 10px;
+      font-size: clamp(32px, 4.2vw, 48px);
+      letter-spacing:-0.02em;
+      line-height:1.05;
+    }
+
+    .sub{
+      margin:0 0 18px;
+      font-size: clamp(16px, 1.8vw, 18px);
+      color:var(--muted);
+      line-height:1.5;
+    }
+
+    ul{
+      margin:0 0 22px;
+      padding-left: 18px;
+      color:var(--muted);
+      line-height:1.6;
+    }
+    li{ margin: 6px 0; }
+
+    .cta{
+      display:flex;
+      gap:10px;
+      align-items:stretch;
+      margin: 10px 0 10px;
+    }
+
+    input[type="email"]{
+      flex:1;
+      min-width: 0;
+      background: rgba(0,0,0,.25);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px 14px;
+      font-size: 16px;
+      color: var(--text);
+      outline: none;
+    }
+    input[type="email"]::placeholder{ color: rgba(183,192,204,.75); }
+    input[type="email"]:focus{
+      border-color: var(--focus);
+      box-shadow: 0 0 0 4px rgba(255,255,255,.08);
+    }
+
+    button{
+      border:0;
+      border-radius: 14px;
+      padding: 14px 16px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor:pointer;
+      background: var(--button);
+      color: var(--buttonText);
+      white-space: nowrap;
+    }
+    button:hover{ transform: translateY(-1px); }
+    button:active{ transform: translateY(0px); }
+
+    .small{
+      margin: 10px 0 0;
+      font-size: 13px;
+      color: rgba(183,192,204,.88);
+      line-height: 1.45;
+    }
+
+    .fineprint{
+      margin-top: 18px;
+      font-size: 12px;
+      color: rgba(183,192,204,.75);
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .fineprint a{
+      color: rgba(243,245,247,.85);
+      text-decoration: none;
+      border-bottom: 1px dotted rgba(243,245,247,.35);
+    }
+    .fineprint a:hover{ border-bottom-color: rgba(243,245,247,.75); }
+
+    .success, .error{
+      display:none;
+      margin-top: 10px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+    .success{
+      background: rgba(46, 204, 113, .12);
+      border: 1px solid rgba(46, 204, 113, .25);
+      color: rgba(243,245,247,.95);
+    }
+    .error{
+      background: rgba(231, 76, 60, .12);
+      border: 1px solid rgba(231, 76, 60, .25);
+      color: rgba(243,245,247,.95);
+    }
+
+    @media (max-width: 520px){
+      .card{ padding: 22px; }
+      .cta{ flex-direction: column; }
+      button{ width: 100%; }
+    }
+
+    /* Ensures "no scroll" on typical screens; on very small heights, it will scroll rather than overflow badly */
+    @media (max-height: 680px){
+      body{ align-items:flex-start; }
+      .card{ margin-top: 10px; }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="wrap">
+    <section class="card" aria-labelledby="title">
+      <h1 id="title">Better Date Nights in Vienna</h1>
+
+      <p class="sub">
+        A weekly list of <strong>interesting, unusual events</strong> that actually make good dates.
+        No dinner clichés. No awkward small talk. Just things worth going to.
+      </p>
+
+      <ul>
+        <li>Curated for <strong>first dates</strong>, second dates, and “we’re bored” dates</li>
+        <li>Art, talks, comedy, music, experiences</li>
+        <li>Local, time-specific, and genuinely interesting</li>
+        <li>Once a week. No spam.</li>
+      </ul>
+
+      <form id="signupForm" method="post" novalidate>
+        <!--
+          OPTION A (Mailchimp embedded form):
+          Replace the form tag with Mailchimp's embed code OR set action="" to your Mailchimp form POST URL.
+
+          OPTION B (Best for Vercel): use an API route (e.g. /api/subscribe) that forwards to Mailchimp/Beehiiv/etc.
+          Then set: action="/api/subscribe"
+        -->
+        <div class="cta">
+          <label class="sr-only" for="email" style="position:absolute;left:-9999px;">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email" placeholder="Email address" required />
+          <button type="submit">Get the list</button>
+        </div>
+
+        <p class="small">
+          Subscribers also get: <strong>“25 Unusual Date Ideas in Vienna”</strong> — free when you sign up.
+        </p>
+
+        <div id="success" class="success" role="status" aria-live="polite">
+          Check your email to confirm your subscription.
+        </div>
+        <div id="error" class="error" role="alert">
+          Something went wrong. Try again, or refresh the page.
+        </div>
+
+        <div class="fineprint">
+          <span>Unsubscribe anytime.</span>
+          <span>Made for people dating in Vienna.</span>
+          <!-- Optional links -->
+          <!-- <a href="/privacy.html">Privacy</a> -->
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <script>
+    // Minimal client-side handling.
+    // If you set form.action to "/api/subscribe" (recommended), this provides a clean UX.
+    (function(){
+      const form = document.getElementById('signupForm');
+      const success = document.getElementById('success');
+      const error = document.getElementById('error');
+
+      // If you haven't set an action, don't intercept—let you paste provider embed code later.
+      if (!form.getAttribute('action')) return;
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        success.style.display = 'none';
+        error.style.display = 'none';
+
+        const email = form.email?.value?.trim();
+        if (!email) return;
+
+        try{
+          const res = await fetch(form.getAttribute('action'), {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email })
+          });
+
+          if (!res.ok) throw new Error('Bad response');
+          success.style.display = 'block';
+          form.reset();
+        }catch(err){
+          error.style.display = 'block';
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
