@@ -4,22 +4,26 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Vienna Date Nights – Dating Event</title>
+
   <style>
     :root{
-      --bg:#ffffff;
       --text:#111111;
       --muted:#333333;
       --line:#e6e6e6;
+      --overlay: rgba(255,255,255,0.88);
     }
 
     *{ box-sizing:border-box; }
     html,body{ height:100%; }
+
     body{
       margin:0;
-      background:var(--bg);
+      font-family: system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
       color:var(--text);
-      font-family: system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";
       overflow:hidden; /* non-scrolling */
+      background:
+        linear-gradient(var(--overlay), var(--overlay)),
+        url("assets/images/viennadatenights.jpg") center / cover no-repeat fixed;
     }
 
     .wrap{
@@ -32,6 +36,10 @@
 
     .container{
       width:min(720px, 100%);
+      background:#ffffff;
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:34px 32px;
     }
 
     .kicker{
@@ -53,15 +61,7 @@
       font-size:16px;
       line-height:1.55;
       color:var(--muted);
-      max-width: 62ch;
-    }
-
-    ul{
-      margin:12px 0 18px 0;
-      padding-left:18px;
-      color:var(--muted);
-      font-size:15px;
-      line-height:1.55;
+      max-width:62ch;
     }
 
     .meta{
@@ -75,7 +75,19 @@
       font-size:14px;
       color:var(--muted);
     }
-    .meta strong{ color:var(--text); font-weight:600; }
+
+    .meta strong{
+      color:var(--text);
+      font-weight:600;
+    }
+
+    ul{
+      margin:12px 0 18px 0;
+      padding-left:18px;
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.55;
+    }
 
     .ctaRow{
       display:flex;
@@ -119,6 +131,7 @@
       align-items:center;
       justify-content:center;
       padding:18px;
+      z-index:100;
     }
 
     .modal{
@@ -161,9 +174,10 @@
     }
 
     @media (max-width: 760px){
-      body{ overflow:auto; } /* allow scroll on small screens if needed */
+      body{ overflow:auto; }
       h1{ font-size:34px; }
       .meta{ grid-template-columns: 1fr; }
+      .container{ padding:26px 22px; }
     }
   </style>
 </head>
@@ -188,9 +202,9 @@
       </div>
 
       <ul>
-        <li>Light structure. Easy introductions. No cringe “games”.</li>
+        <li>Light structure. Easy introductions. No forced games.</li>
         <li>Monogamous dating focus.</li>
-        <li>RSVP required. If it fills, you’ll get a waitlist option.</li>
+        <li>RSVP required. Limited capacity.</li>
       </ul>
 
       <div class="ctaRow">
@@ -204,11 +218,11 @@
     </div>
   </main>
 
-  <!-- Modal: keeps the landing page non-scrolling while still “incorporating” the form -->
-  <div class="backdrop" id="backdrop" role="dialog" aria-modal="true" aria-labelledby="title">
+  <!-- Modal with Google Form -->
+  <div class="backdrop" id="backdrop" role="dialog" aria-modal="true">
     <div class="modal">
       <div class="modalTop">
-        <strong id="title">Reserve your spot</strong>
+        <strong>Reserve your spot</strong>
         <button class="close" type="button" id="close">Close</button>
       </div>
 
@@ -232,9 +246,10 @@
       backdrop.style.display = "flex";
       document.body.style.overflow = "hidden";
     }
+
     function hide(){
       backdrop.style.display = "none";
-      document.body.style.overflow = "hidden"; // keep non-scrolling on desktop
+      document.body.style.overflow = "hidden";
     }
 
     openForm.addEventListener("click", show);
